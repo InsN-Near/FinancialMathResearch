@@ -5,8 +5,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
-#Não precisa de comentários
-#mas se quiser um gráfico aleatório dá um "import time" e coloca aqui embaixo um "np.random.seed(int(time.time()))"
+
+
 np.random.seed(0) 
 n = 80 
 df = pd.DataFrame()
@@ -24,7 +24,6 @@ df['High'] = df[['Open', 'Close']].max(axis=1) + np.random.uniform(low=0, high=1
 df['Low'] = df[['Open', 'Close']].min(axis=1) - np.random.uniform(low=0, high=10, size=n) 
 df['Color'] = np.where(df['Close'] >= df['Open'], 'green', 'red') 
 
-#aqui tu vai rachar kkkkkkkkkkkkkkk, a genialidade dos candles
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.set_title('Gráfico de candlesticks aleatório PTFX')
 ax.set_xlabel('Data')
@@ -32,7 +31,7 @@ ax.set_ylabel('Preço')
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%d/%m/%Y'))
 ax.grid(True) 
 for i in range(n): 
-    #kkkkkkkkkkkkkkkkkkkk namoral, pô, não zoa, ficou muito bom 
+    
     ax.vlines(x=df['Date'][i], ymin=df['Open'][i], ymax=df['Close'][i], color=df['Color'][i], linewidth=6)
     ax.vlines(x=df['Date'][i], ymin=df['Low'][i], ymax=df['High'][i], color=df['Color'][i])
 plt.show()
