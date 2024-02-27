@@ -15,11 +15,11 @@ df['Open'] = np.zeros(n)
 df['Close'] = np.zeros(n) 
 df['Open'][0] = np.random.uniform(low=100, high=200) 
 df['Close'][0] = df['Open'][0] + np.random.normal(scale=10) 
-for i in range(1, n): #essa foi a minha solução genial kkkkkk
+for i in range(1, n):
     
-    df.loc[i, 'Open'] = df.loc[i-1, 'Close'] #Aí o reço de abertura é igual ao preço de fechamento da vela anterior
+    df.loc[i, 'Open'] = df.loc[i-1, 'Close'] 
     
-    df.loc[i, 'Close'] = df.loc[i, 'Open'] + np.random.normal(scale=10) #adicionar valor aleatório, o que eu te falei. E a definiçao de limites
+    df.loc[i, 'Close'] = df.loc[i, 'Open'] + np.random.normal(scale=10) 
 df['High'] = df[['Open', 'Close']].max(axis=1) + np.random.uniform(low=0, high=10, size=n) 
 df['Low'] = df[['Open', 'Close']].min(axis=1) - np.random.uniform(low=0, high=10, size=n) 
 df['Color'] = np.where(df['Close'] >= df['Open'], 'green', 'red') 
